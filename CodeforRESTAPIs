@@ -1,4 +1,4 @@
-[NeededJar: apache-httpclient]
+[NeededJar: apache-httpclient ver:4.5]
 
   private CloseableHttpClient client = HttpClients.createDefault();;
 	private String result;

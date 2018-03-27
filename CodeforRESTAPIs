@@ -1,0 +1,91 @@
+[NeededJar: apache-httpclient]
+
+  private CloseableHttpClient client = HttpClients.createDefault();;
+	private String result;
+
+	@Override
+	public String getResponse(String method, String url, String payload) {
+		try {
+			if (!url.isEmpty()) {
+				if (method.equalsIgnoreCase("GET")) {
+					return getGetResponse(url);
+				} else if (method.equalsIgnoreCase("POST")) {
+					return getPostResponse(url, payload);
+				} else if (method.equalsIgnoreCase("PUT")) {
+					return getPutResponse(url, payload);
+				} else if (method.equalsIgnoreCase("DELETE")) {
+					return getDeleteResponse(url);
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "PARAMETERS_ERROR";
+	}
+
+	private ResponseHandler<String> responseHandling(String url) {
+		return new ResponseHandler<String>() {
+			public String handleResponse(HttpResponse res) {
+				System.out.println("Making restcall to URL: " + url + " status code: " + res.getStatusLine().getStatusCode());
+				HttpEntity entity = res.getEntity();
+				try {
+					return (entity != null) ? (EntityUtils.toString(entity)) : (null);
+				} catch (Exception e) {
+					
+				}
+				return null;
+			}
+		};
+	}
+	private String getGetResponse(String url) {
+		HttpGet get = new HttpGet(url);
+
+		ResponseHandler<String> responseHandler = responseHandling(url);
+		try {
+			result = client.execute(get, responseHandler);
+		} catch (Exception e) {
+			
+		}
+		return result;
+	}
+
+
+
+	private String getPostResponse(String url, String payload) {
+		HttpPost post = new HttpPost(url);
+		try {
+			StringEntity stringEntity = new StringEntity(payload);
+			stringEntity.setContentType("application/json");
+			post.setEntity(stringEntity);
+			ResponseHandler<String> responseHandler = responseHandling(url);
+			result = client.execute(post, responseHandler);
+		} catch (Exception e) {
+			
+		}
+		return result;
+	}
+
+	private String getPutResponse(String url, String payload) {
+		HttpPut put = new HttpPut(url);
+		try {
+			StringEntity stringEntity = new StringEntity(payload);
+			stringEntity.setContentType("application/json");
+			put.setEntity(stringEntity);
+			ResponseHandler<String> responseHandler = responseHandling(url);
+			result = client.execute(put, responseHandler);
+		} catch (Exception e) {
+			
+		}
+		return result;
+	}
+
+	private String getDeleteResponse(String url) {
+		HttpDelete delete = new HttpDelete(url);
+		ResponseHandler<String> responseHandler = responseHandling(url);
+		try {
+			result = client.execute(delete, responseHandler);
+		} catch (Exception e) {
+			
+		}
+		return result;
+	}

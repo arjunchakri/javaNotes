@@ -24,3 +24,17 @@
 	{
 	    	System.out.println(sc.nextLine());
 	}
+
+	//------------------Getting file or html raw content 
+	String path = "http://bit.do/abcdea";
+	URL url = new URL(path);
+	URLConnection conn = url.openConnection();
+
+	BufferedReader br = new BufferedReader(
+	    new InputStreamReader(conn.getInputStream()));
+
+	String inputLine;
+	while ((inputLine = br.readLine()) != null) {
+	    System.out.println(inputLine);
+	}
+	br.close();

@@ -43,7 +43,8 @@ Arraylist:
     		System.out.println(arrayList1.equals(arrayList2));
 	
     
- 
+
+
 Stack:
 	a) selecting available courses
 	Stack stack1 = new Stack<>();
@@ -66,3 +67,35 @@ Stack:
 			}
 
 		}
+
+
+Maps:
+	a)hashmap
+		HashMap map = new HashMap<>();
+		map.put(100, "abc");
+		map.put(200, "bc");
+		map.put(300, "kk");
+		map.put(null, "kk");
+		System.out.println(map);
+		System.out.println(map.keySet());
+		System.out.println(map.values());
+	
+	b)linked hashmap
+		Map map2 = new LinkedHashMap<>();
+		map2.put("a", 100);
+		map2.put("b", 100);
+		map2.put("d", 100);
+		map2.put("", 100);
+		System.out.println(map2.get("k"));
+	c) weakHashMap
+		String str = new String("someKey1");
+		String str2 = new String("someKey2");
+		WeakHashMap weakHashMap = new WeakHashMap<>();
+		weakHashMap.put(str, "10");
+		HashMap map3 = new HashMap<>();
+		map3.put(str2, "abc");
+		str = null;
+		str2 = null;
+		System.gc();
+		System.out.println(weakHashMap.get("someKey1") + "\n" + map3.get("someKey2"));
+	

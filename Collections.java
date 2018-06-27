@@ -41,7 +41,31 @@ Arraylist:
 		Collections.sort(arrayList2);
 		
     		System.out.println(arrayList1.equals(arrayList2));
-	
+	c) sorting objects
+class NameComparator implements Comparator<Employee> {
+
+	@Override
+	public int compare(Employee o1, Employee o2) {
+		return o1.name.compareTo(o2.name);
+		//for integers
+		// if(o1.age==o1.age)
+		// return 0;
+		// else if(o1.age>o1.age)
+		// return 1;
+		// else
+		// return -1;
+	}
+}
+		ArrayList<Employee> arrayList = new ArrayList<>();
+		arrayList.add(new Employee("0", "name1", "a", "nowhere"));
+		arrayList.add(new Employee("2", "name4", "b", "abc"));
+		arrayList.add(new Employee("5", "name3", "c", "def"));
+		arrayList.add(new Employee("1", "name2", "d", "ghi"));
+		System.out.println(arrayList);
+
+		Collections.sort(arrayList, new NameComparator());
+		System.out.println(arrayList);
+
     
 
 

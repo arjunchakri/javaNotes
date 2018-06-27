@@ -1,0 +1,23 @@
+//----------string regex
+		if (Pattern.matches("\\d{2}", "10"))
+			System.out.println("is 2-digit number");
+		if (Pattern.matches("\\d", "1"))
+			System.out.println("is 1-digit number");
+		if (Pattern.matches(".", "0"))
+			System.out.println("is any character");
+		if (Pattern.matches("\\s", " "))
+			System.out.println("is whitespace");
+		if (Pattern.matches("[a-zA-Z0-9]", "k"))
+			System.out.println("is");
+		if (Pattern.matches("\\w", "k")) // [a-zA-Z_0-9]
+			System.out.println("is");
+		
+//------------groups
+
+
+
+
+
+random questions:
+path vs classpath
+string initialization(as literal and object)

@@ -1,0 +1,185 @@
+//--------------anonymous methods
+abstract class Bike{
+	public abstract void run();
+}
+
+public class AnonymousForAbstractClass{
+	
+	public static void main(String[] args) {
+		Bike bike = new Bike(){
+
+			@Override
+			public void run() {
+				System.out.println("running..");
+			}
+		};
+		bike.run();
+	}
+	
+}
+
+//---------anonymous inner class
+interface Person {
+	public void eat();
+}
+
+public class AnonymousInnerClass {
+
+	public static void main(String[] args) {
+		Person person = new Person() {
+			@Override
+			public void eat() {
+				System.out.println("Eating..");
+			}
+		};
+		person.eat();
+	}
+
+}
+
+//-------------cloning
+public class Cloning implements Cloneable {
+	int a = 10;
+	int b = 10;
+
+	public static void main(String[] args) throws CloneNotSupportedException {
+		Cloning cloning = new Cloning();
+		System.out.println(cloning.a + " , " + cloning.a);
+		Cloning cloning2 = new Cloning();
+		System.out.println(cloning2.a + " , " + cloning2.a);
+		System.out.println();
+		cloning2.a++;
+		cloning2.b++;
+
+	}
+
+}
+//-----------------inner classes
+a)
+package training.day2;
+
+public class InnerClasses {
+
+	private int data = 30;
+
+	class Inner {
+		public void method() {
+			System.out.println(data);
+		}
+	}
+
+	// creating inner class
+	public void createInnerObject() {
+		Inner inner = new Inner();
+		inner.method();
+	}
+
+	public static void main(String[] args) {
+		// -error
+		// Inner obj = new Inner();
+
+		// creating inner class
+		InnerClasses.Inner inner = new InnerClasses().new Inner();
+		// inner.method();
+
+	}
+
+}
+
+package training.day2;
+
+public class InnerClassesExtended {
+	//method local inner class
+	private int data = 10;
+
+	public void innerClassDeclaration() {
+		class Inner {
+			public void method() {
+				System.out.println(data);
+			}
+		}
+		Inner inner = new Inner();
+		
+	}
+
+	public static void main(String[] args) {
+		InnerClassesExtended obj = new InnerClassesExtended();
+		obj.innerClassDeclaration();
+	}
+
+}
+
+
+b)
+package training.day2;
+
+public class InnerClassesExtended {
+	//method local inner class
+	private int data = 10;
+
+	public void innerClassDeclaration() {
+		class Inner {
+			public void method() {
+				System.out.println(data);
+			}
+		}
+		Inner inner = new Inner();
+		
+	}
+
+	public static void main(String[] args) {
+		InnerClassesExtended obj = new InnerClassesExtended();
+		obj.innerClassDeclaration();
+	}
+
+}
+
+
+c) static inner classes
+package training.day2;
+
+public class StaticInnerClass {
+	public static int a = 10;
+	
+	static class Inner {
+		public static void show(){
+			System.out.println("a = " + a);
+		}
+	}
+	
+	public static void main(String[] args) {
+		Inner.show();
+	}
+	
+	
+}
+
+//--------------wrapper classes
+package training.day2;
+
+public class WrapperClasses {
+	public static void main(String[] args) {
+		// StringBuffer stringBuffer = new StringBuffer("Hello");
+		// System.out.println(stringBuffer.hashCode());
+		// stringBuffer.append("World");
+		// System.out.println(stringBuffer.hashCode());
+		int a = 10;
+		Integer i = Integer.valueOf(a);
+		Integer j = new Integer(10);
+
+		byte b = 127;
+		Byte byte1 = new Byte((byte) 10);
+		System.out.println(byte1);
+
+		double d = 10;
+		Double d1 = new Double(100);
+
+		char c = 'c';
+		Character character = new Character('c');
+		
+	}
+
+}
+
+
+

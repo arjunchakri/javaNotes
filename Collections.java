@@ -44,3 +44,25 @@ Arraylist:
 	
     
  
+Stack:
+	a) selecting available courses
+	Stack stack1 = new Stack<>();
+		stack1.add("java");
+		stack1.add("dotnet");
+		stack1.add("nodejs");
+		stack1.add("angularjs");
+
+		Stack stack2 = new Stack<>();
+		System.out.println("Enter courses");
+		Scanner scanner = new Scanner(System.in);
+		String eachInput;
+		while (!stack1.isEmpty() && !(eachInput = scanner.next()).equals("exit")) {
+			if (stack1.contains(eachInput)) {
+				stack1.remove(eachInput);
+				stack2.push(eachInput);
+				System.out.println(stack1 + " \n" + stack2);
+			} else {
+				System.out.println("invalid course");
+			}
+
+		}

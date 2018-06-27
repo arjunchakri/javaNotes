@@ -1,3 +1,125 @@
+//-------------inheritance
+package training.day1;
+
+abstract class AbstractClass {
+	public abstract void abstractMethod();
+	
+	
+	public int fee(){
+		return 10;
+	}
+}
+
+class AbstractClassImplementation1 extends AbstractClass {
+
+	static class AA{
+		static int a = 0;
+	}
+	
+	public int fee(){
+		return super.fee() + 5;
+	}
+	
+	@Override
+	public void abstractMethod() {
+		System.out.println("Abstract method1 exec..");
+	}
+}
+class AbstractClassImplementation2 extends AbstractClass {
+
+	@Override
+	public void abstractMethod() {
+		System.out.println("Abstract method2 exec..");
+	}
+}
+public class Inheritance {
+	public static void main(String[] args) {
+		AbstractClass obj1 = new AbstractClassImplementation1();
+		obj1.abstractMethod();
+		AbstractClass obj2 = new AbstractClassImplementation2();
+		obj2.abstractMethod();
+		System.out.println(AbstractClassImplementation1.AA.a);
+		
+	}
+}
+
+
+//-----------Access specifiers
+package training.day1;
+
+public class A {
+
+	public int a = 10;
+	private int b = 20;
+	protected int c = 30;
+	int d = 40;
+
+	public static void main(String[] args) {
+		A obj = new A();
+		System.out.println("a = " + obj.a);
+		System.out.println("b = " + obj.b);
+		System.out.println("c = " + obj.c);
+		System.out.println("d = " + obj.d);
+	}
+
+}
+class B {
+
+	public static void main(String[] args) {
+		A obj = new A();
+		System.out.println("a = " + obj.a);
+//		System.out.println("b = " + obj.b);
+		System.out.println("c = " + obj.c);
+		System.out.println("d = " + obj.d);
+	}
+
+}
+public class C extends A{
+
+	public static void main(String[] args) {
+		C obj = new C();
+		System.out.println("a = " + obj.a);
+//		System.out.println("b = " + obj.b);
+		System.out.println("c = " + obj.c);
+//		System.out.println("d = " + obj.d);
+	}
+
+}
+
+
+//-------------overloading-overriding
+package training.day1;
+class Parent {
+	public int add(int i, int j) {
+		return i - j;
+	}
+
+	public int add(int i, int j, int k) {
+		return i + j - k;
+	}
+
+}
+
+class Child extends Parent {
+	public int add(int i, int j) {
+		return i + j;
+	}
+
+	public int add(int i, int j, int k) {
+		return i + j + k;
+	}
+
+}
+
+public class OverloadingOverriding {
+
+	public static void main(String[] args) {
+		Parent p = new Child();
+		System.out.println(p.add(1, 2));
+	}
+}
+
+
 //--------------anonymous methods
 abstract class Bike{
 	public abstract void run();

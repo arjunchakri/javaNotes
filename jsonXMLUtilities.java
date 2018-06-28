@@ -70,3 +70,27 @@ for (int i = 0; i < nodes.getLength(); i++) {
     }
 }
   
+//Serialization------------------------
+public class C3Serialization {
+	static void serializeObject(Object object, File file) throws Exception {
+		FileOutputStream fileOutputStream = new FileOutputStream(file);
+		ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+		objectOutputStream.writeObject(object);
+	}
+
+	static Object deserializeObject(File file) throws Exception {
+		Object object = null;
+		FileInputStream fileInputStream = new FileInputStream(file);
+		ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+		return objectInputStream.readObject();
+
+	}
+
+	public static void main(String[] args) throws Exception {
+		Employee employee = new Employee("10", "abc", "a", "nowhreer");
+		File file = new File("employee.txt");
+		serializeObject(employee, file);
+		System.out.println(deserializeObject(file).toString());
+	}
+}
+

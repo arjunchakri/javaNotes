@@ -48,3 +48,25 @@ JsonObject jsonobj = new JsonParser().parse(results).getAsJsonObject();
 
 
 
+//XML Xpath---------------------
+FileInputStream fileInputStream = new FileInputStream(file);
+InputSource is = new InputSource(fileInputStream);
+
+DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+documentBuilderFactory.setNamespaceAware(true);
+DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+Document document = documentBuilder.parse(is);
+
+XPath xPath = XPathFactory.newInstance().newXPath();
+String xpathQuery = "configuration/configdescription";
+String[] eachArr = {};
+NodeList nodes = (NodeList) xPath.compile(xpathQuery).evaluate(document, XPathConstants.NODESET);
+for (int i = 0; i < nodes.getLength(); i++) {
+  if (nodes.item(i).getNodeType() == Node.ELEMENT_NODE) {//filtering elements
+    if (nodes.item(i).getAttributes().getNamedItem("key") != null)
+        nodes.item(i).getAttributes().getNamedItem("key").getNodeValue(); // xml node values
+        NodeList configList = nodes.item(i).getChildNodes(); //getting childnodes
+        
+    }
+}
+  

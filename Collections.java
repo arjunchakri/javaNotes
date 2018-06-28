@@ -104,6 +104,25 @@ Maps:
 		System.out.println(map.keySet());
 		System.out.println(map.values());
 	
+	Iterating:
+		HashMap hashMap = new HashMap<>();
+		hashMap.put("a", 1);
+		hashMap.put("b", 2);
+		hashMap.put("c", 3);
+
+		//key-value entry
+		Set<Entry> set = hashMap.entrySet();
+		for (Entry e : set) {
+			System.out.println(e.getKey());
+		}
+
+		//keys
+		Set set1 = hashMap.keySet();
+		for (Object e : set1) {
+			System.out.println(e);
+		}
+
+
 	b)linked hashmap
 		Map map2 = new LinkedHashMap<>();
 		map2.put("a", 100);

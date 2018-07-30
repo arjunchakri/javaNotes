@@ -36,8 +36,8 @@ public class MyAlgorithmSingleinstance {
 	}
 
 	public static MyAlgorithmSingleinstance getInstance() {
-  if(MY_ALGORITHM == null)
-		MY_ALGORITHM = new MyAlgorithmSingleinstance();
-  return MY_ALGORITHM;
+		if (MY_ALGORITHM == null)
+			MY_ALGORITHM = new MyAlgorithmSingleinstance();
+		return MY_ALGORITHM;
 	}
 }

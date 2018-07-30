@@ -1,0 +1,43 @@
+//Auto init
+public class MyAlgorithmSingleinstance {
+	private static final MyAlgorithmSingleinstance MY_ALGORITHM = new MyAlgorithmSingleinstance();
+
+	private MyAlgorithmSingleinstance() {
+
+	}
+
+	public void start() {
+
+	}
+
+	public void stop() {
+
+	}
+
+	public static MyAlgorithmSingleinstance getInstance() {
+		return MY_ALGORITHM;
+	}
+}
+
+//Ondemand init
+public class MyAlgorithmSingleinstance {
+	private static MyAlgorithmSingleinstance MY_ALGORITHM = null;
+
+	private MyAlgorithmSingleinstance() {
+
+	}
+
+	public void start() {
+
+	}
+
+	public void stop() {
+
+	}
+
+	public static MyAlgorithmSingleinstance getInstance() {
+  if(MY_ALGORITHM == null)
+		MY_ALGORITHM = new MyAlgorithmSingleinstance();
+  return MY_ALGORITHM;
+	}
+}
